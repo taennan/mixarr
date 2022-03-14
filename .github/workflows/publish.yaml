@@ -11,11 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Setup env
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Uses main
       uses: actions/checkout@v2
 
@@ -39,3 +34,5 @@ jobs:
         git add .
         git commit -m 'rebuilt docs'
         git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
