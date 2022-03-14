@@ -19,6 +19,9 @@ jobs:
       with:
         node-version: '16'
 
+    - name: LS
+      run: ls -lf
+
     - name: Builds docs
       run: |
         npm i -g jsdoc
