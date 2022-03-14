@@ -31,6 +31,13 @@ jobs:
 
         git checkout -b gh-pages
 
+        echo .gitignore             >> .gitignore
+        echo .github                >> .gitignore
+        echo .DS_Store              >> .gitignore
+        echo src                    >> .gitignore
+        echo package-lock.json      >> .gitignore
+        echo package.json           >> .gitignore
+
         git add .
         git commit -m 'rebuilt docs'
         git push --set-upstream origin gh-pages
