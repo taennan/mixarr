@@ -1,0 +1,41 @@
+name: Build docs and push to gh-pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Setup env
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Uses main
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16'
+
+    - name: Builds docs
+      run: |
+        npm i -g jsdoc
+        jsdoc index.js -d ./docs
+
+    - name: Deploy
+      run: |
+        git config --local user.name  taennan
+        git config --local user.email taennan@zohomail.com
+
+        git checkout -b gh-pages
+
+        git add .
+        git commit -m 'rebuilt docs'
+        git push
