@@ -29,10 +29,10 @@ jobs:
         git config --local user.name  taennan
         git config --local user.email taennan@zohomail.com
 
-        git checkout -b gh-pages
+        git checkout -b documentation
 
         git add .
         git commit -m 'rebuilt docs'
-        git push --set-upstream origin gh-pages
+        git push -f --set-upstream origin documentation
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
