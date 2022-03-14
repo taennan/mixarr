@@ -25,7 +25,7 @@ jobs:
     - name: Builds docs
       run: |
         npm i -g jsdoc
-        jsdoc ./index.js -d ./docs
+        jsdoc .src/index.js -d ./docs
 
     - name: Deploy
       run: |
